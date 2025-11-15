@@ -1,0 +1,1 @@
+print("comeco de tudo")
