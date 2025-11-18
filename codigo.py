@@ -18,5 +18,14 @@ with open("input.txt", "r") as arquivo:
 def submatriz(matriz, linha_inicial, linha_final, coluna_inicial, coluna_final):
     return [linha[coluna_inicial:coluna_final+1] for linha in matriz[linha_inicial:linha_final+1]]
 
-subretangulo = submatriz(matriz, 0, 4, 0, 0)
+#exemplo do subretangulo maximo do exemplo do pdf
+subretangulo = submatriz(matriz, 1, 3, 0, 1)
 print(subretangulo)
+
+#calcula a soma dos elementos do subretangulo
+soma = 0
+for linha in subretangulo:
+    for numero in linha:
+        soma += numero
+
+print("Soma =", soma)
