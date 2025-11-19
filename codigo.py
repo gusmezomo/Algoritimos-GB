@@ -33,9 +33,15 @@ def maior_subretangulo(matriz):
 
     melhor_subretangulo = None
 
+    # Itera sobre todas as possíveis linhas iniciais do sub-retângulo.
     for linha_inicial in range(n):
+        # Para cada linha inicial, itera sobre todas as possíveis linhas finais.
+        # Começa de 'linha_inicial' para garantir que a linha final seja sempre igual ou posterior à inicial.
         for linha_final in range(linha_inicial, n):
+            # Itera sobre todas as possíveis colunas iniciais do sub-retângulo.
             for coluna_inicial in range(n):
+                # Para cada coluna inicial, itera sobre todas as possíveis colunas finais.
+                # Começa de 'coluna_inicial' para garantir que a coluna final seja sempre igual ou posterior à inicial.
                 for coluna_final in range(coluna_inicial, n):
 
                     sub = submatriz(matriz, linha_inicial, linha_final, coluna_inicial, coluna_final)
