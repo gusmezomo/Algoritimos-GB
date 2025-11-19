@@ -5,7 +5,7 @@ def gerar_matriz_txt():
     N = int(input("Digite o tamanho da matriz (N): "))
 
     # Nome do arquivo
-    nome_arquivo = "m_gerada.txt"
+    nome_arquivo = "gen.txt"
 
     # Gera a matriz NxN com valores entre -127 e 127
     matriz = [[random.randint(-127, 127) for _ in range(N)] for _ in range(N)]

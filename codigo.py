@@ -2,7 +2,7 @@
 matriz = []
 
 # Abre o arquivo
-with open("input.txt", "r") as arquivo:
+with open("gen100.txt", "r") as arquivo:
     # Lê o tamanho
     n = int(arquivo.readline().strip())
     # Lê as próximas n linhas
@@ -74,6 +74,8 @@ melhor_soma, melhor_subretangulo = maior_subretangulo(matriz)
 
 
 print("Maior soma encontrada:", melhor_soma)
-print("Sub-retângulo correspondente:")
-for linha in melhor_subretangulo:
-    print(linha)
+
+#ta dando erro
+#print("Sub-retângulo correspondente:")
+#for linha in melhor_subretangulo:
+    #print(linha)
