@@ -43,22 +43,35 @@ def maior_subretangulo(matriz):
                 # Para cada coluna inicial, itera sobre todas as possíveis colunas finais.
                 # Começa de 'coluna_inicial' para garantir que a coluna final seja sempre igual ou posterior à inicial.
                 for coluna_final in range(coluna_inicial, n):
-
+                    # Para a combinação atual de coordenadas (linha_inicial, linha_final, etc.),
+                    # a função 'submatriz' é chamada para extrair o sub-retângulo correspondente da matriz principal.
                     sub = submatriz(matriz, linha_inicial, linha_final, coluna_inicial, coluna_final)
 
-                    # soma dos elementos do sub-retângulo
+                    # Inicia uma variável 'soma' para calcular a soma dos elementos do sub-retângulo atual.
                     soma = 0
+                    # Itera sobre cada 'linha' dentro do 'sub' (sub-retângulo).
                     for linha in sub:
+                        # Dentro de cada linha, itera sobre cada 'numero'.
                         for numero in linha:
+                            # Adiciona o valor do 'numero' à 'soma' total do sub-retângulo.
                             soma += numero
 
+                    # Compara a 'soma' do sub-retângulo atual com a 'melhor_soma' encontrada até o momento.
                     if soma > melhor_soma:
+                        # Se a soma atual for maior, ela se torna a nova 'melhor_soma'.
                         melhor_soma = soma
+                        
+    # Após todos os laços terminarem (ou seja, todos os sub-retângulos foram verificados),
+    # a função retorna a maior soma encontrada e o sub-retângulo correspondente.
+    # (Neste código, 'melhor_subretangulo' não é atualizado, então ele permanecerá com seu valor inicial 'None').
     return melhor_soma, melhor_subretangulo
 
 
-# executar e mostrar somente resultado final
+# --- Execução do Código ---
+# Chama a função 'maior_subretangulo', passando a matriz lida do arquivo.
+# Os valores retornados (a maior soma e o sub-retângulo) são armazenados nas variáveis.
 melhor_soma, melhor_subretangulo = maior_subretangulo(matriz)
+
 
 print("Maior soma encontrada:", melhor_soma)
 print("Sub-retângulo correspondente:")
