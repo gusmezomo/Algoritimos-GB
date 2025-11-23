@@ -2,7 +2,7 @@
 matriz = []
 
 # Abre o arquivo
-with open("gen100.txt", "r") as arquivo:
+with open("in_out/in1", "r") as arquivo:
     # Lê o tamanho
     n = int(arquivo.readline().strip())
     # Lê as próximas n linhas
