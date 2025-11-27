@@ -1,20 +1,20 @@
+#le a matriz de um arquivo de texto
+matriz = []
+
 # função inicial para criar um subretangulo (mantendo a estrutura do codigo.py)
 def submatriz(matriz, linha_inicial, linha_final, coluna_inicial, coluna_final):
     return [linha[coluna_inicial:coluna_final+1] for linha in matriz[linha_inicial:linha_final+1]]
 
 # função para achar o sub-retângulo de maior soma, com a adição da lógica de poda
 def maior_subretangulo_com_poda(matriz):
-    # tamanho da matriz : 5x5 10x10 etc (mantendo a estrutura do codigo.py)
+    # tamanho da matriz : 5x5 10x10 etc
     tamanho_matriz = len(matriz)
-    if tamanho_matriz == 0:
-        return 0
+    # Inicializa com o primeiro elemento da matriz.
+    melhor_soma = matriz[0][0]
 
-    # 1. PRÉ-CÁLCULO PARA PODA: Calcula o máximo absoluto na matriz (do podas2.0.py)
+    # PRÉ-CÁLCULO PARA PODA: Calcula o máximo absoluto na matriz
     # É usado como um limite superior teórico para qualquer sub-retângulo.
     max_cell = max(max(row) for row in matriz) if any(matriz) else 0
-
-    # Inicializa com o primeiro elemento da matriz. (mantendo a estrutura do codigo.py)
-    melhor_soma = matriz[0][0]
 
     # Itera sobre todas as possíveis linhas iniciais do sub-retângulo.
     for linha_inicial in range(tamanho_matriz):
@@ -26,11 +26,11 @@ def maior_subretangulo_com_poda(matriz):
                 for coluna_final in range(coluna_inicial, tamanho_matriz):
 
                     # Cálculo de área para a poda (do podas2.0.py)
-                    width = coluna_final - coluna_inicial + 1
-                    height = linha_final - linha_inicial + 1
-                    area = width * height
+                    largura = coluna_final - coluna_inicial + 1
+                    altura = linha_final - linha_inicial + 1
+                    area = largura * altura
 
-                    # 2. PODA: Se o retângulo, mesmo com o maior valor da matriz
+                    # PODA: Se o retângulo, mesmo com o maior valor da matriz
                     # em todas as células, não alcança a 'melhor_soma' já encontrada,
                     # ele não precisa ser calculado (do podas2.0.py).
                     if max_cell > 0 and max_cell * area < melhor_soma:
@@ -56,26 +56,15 @@ def maior_subretangulo_com_poda(matriz):
     # Após todos os laços terminarem, a função retorna a maior soma encontrada.
     return melhor_soma
 
-# --- Parte de leitura e execução (Adaptação do codigo.py) ---
+# Abre o arquivo da matriz
+with open("in_out/in2", "r") as arquivo:
+    # Lê o tamanho
+    n = int(arquivo.readline().strip())
+    # Lê as próximas n linhas
+    for _ in range(n):
+        linha = list(map(int, arquivo.readline().split()))
+        matriz.append(linha)
 
-#le a matriz de um arquivo de texto
-matriz = []
 
-# Abre o arquivo (mantendo o caminho do codigo.py)
-# NOTA: O arquivo "in_out/gen25.txt" precisa estar acessível para esta parte funcionar
-try:
-    with open("in_out/gen25.txt", "r") as arquivo:
-        # Lê o tamanho
-        n = int(arquivo.readline().strip())
-        # Lê as próximas n linhas
-        for _ in range(n):
-            linha = list(map(int, arquivo.readline().split()))
-            matriz.append(linha)
-
-    # Chama a função 'maior_subretangulo_com_poda', passando a matriz lida do arquivo.
-    melhor_soma = maior_subretangulo_com_poda(matriz)
-    print("Maior soma encontrada:", melhor_soma)
-
-except FileNotFoundError:
-    print("ERRO: Arquivo 'in_out/gen25.txt' não encontrado. Não foi possível executar o código com o arquivo.")
-    print("Certifique-se de que o arquivo está no caminho correto.")
+melhor_soma = maior_subretangulo_com_poda(matriz)
+print("Maior soma encontrada:", melhor_soma)
