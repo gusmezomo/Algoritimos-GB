@@ -45,17 +45,13 @@ def maior_subretangulo_com_poda(matriz):
                     if celula_maxima > 0 and celula_maxima * area < melhor_soma:
                         continue # Pula para o próximo sub-retângulo
 
-                    # Para a combinação atual de coordenadas, a função 'submatriz' é chamada
-                    # para extrair o sub-retângulo correspondente.
+                    # a função 'submatriz' é chamada para extrair o sub-retângulo correspondente.
                     subretangulo = submatriz(matriz, linha_inicial, linha_final, coluna_inicial, coluna_final)
 
                     # Soma dos elementos do sub-retângulo atual.
                     soma = 0
-                    # Itera sobre cada 'linha' dentro do 'subretangulo'.
                     for linha in subretangulo:
-                        # Dentro de cada linha, itera sobre cada 'numero'.
                         for numero in linha:
-                            # Adiciona o valor do 'numero' à 'soma' total.
                             soma += numero
 
                     # Compara e atualiza a 'melhor_soma'.
