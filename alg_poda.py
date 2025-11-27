@@ -25,13 +25,13 @@ def maior_subretangulo_com_poda(matriz):
     # É usado como um limite superior teórico para qualquer sub-retângulo.
     celula_maxima = max(max(linha) for linha in matriz) if any(matriz) else 0
 
-    # Define a borda superior do sub-retângulo.
+    # Define a linha inicial do sub-retângulo.
     for linha_inicial in range(tamanho_matriz):
-        # Define a borda inferior do sub-retângulo.
+        # Define a linha final do sub-retângulo.
         for linha_final in range(linha_inicial, tamanho_matriz):
-            # Define a borda esquerda do sub-retângulo.
+            # Define a coluna inicial do sub-retângulo.
             for coluna_inicial in range(tamanho_matriz):
-                # Define a borda direita do sub-retângulo.
+                # Define a coluna final do sub-retângulo.
                 for coluna_final in range(coluna_inicial, tamanho_matriz):
 
                     # Cálculo de área para a poda
